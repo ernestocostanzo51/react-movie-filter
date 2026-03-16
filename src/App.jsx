@@ -20,6 +20,14 @@ function App() {
       <div className='row'>
         <div className='col'>
           <h1>Lista film</h1>
+          <p>Seleziona il genere che vuoi visionare</p>
+          <select class="form-select" aria-label="Default select example">
+               <option selected>Open this select menu</option>
+               <option value="1">Fantascienza</option>
+               <option value="2">Thriller</option>
+               <option value="3">Romantico</option>
+               <option value="3">Azione</option>
+          </select>
         </div>
       </div>
     </div>
