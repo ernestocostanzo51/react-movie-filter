@@ -18,7 +18,14 @@ function App() {
  const [genere, setGenere] = useState()
  console.log(genere)
  
-const [filmFiltrati, setFilmFiltrati] = useState("all")  
+ const [filmFiltrati, setFilmFiltrati] = useState("all")  
+
+ useEffect(() => {
+  if (genere) {
+    const filtrati = films.filter(film => film.genre === genere);
+    setFilmFiltrati(filtrati);
+  }
+}, [genere]);
 
   return (
     <>
