@@ -1,9 +1,12 @@
 import { useState } from 'react'
+import { useEffect } from 'react'
 
 
 function App() {
  
-  const films = [
+
+
+  const films  = [
    { title: 'Inception', genre: 'Fantascienza' },
    { title: 'Il Padrino', genre: 'Thriller' },
    { title: 'Titanic', genre: 'Romantico' },
@@ -12,7 +15,10 @@ function App() {
    { title: 'Pulp Fiction', genre: 'Thriller' },
  ]
 
-  
+ const [genere, setGenere] = useState()
+ console.log(genere)
+ 
+const [filmFiltrati, setFilmFiltrati] = useState("all")  
 
   return (
     <>
@@ -21,12 +27,11 @@ function App() {
         <div className='col'>
           <h1>Lista film</h1>
           <p>Seleziona il genere che vuoi visionare</p>
-          <select class="form-select" aria-label="Default select example">
-               <option selected>Open this select menu</option>
-               <option value="1">Fantascienza</option>
-               <option value="2">Thriller</option>
-               <option value="3">Romantico</option>
-               <option value="3">Azione</option>
+          <select className="form-select" aria-label="Default select example" onChange={(e) => setGenere(e.target.value)}>
+               <option>Fantascienza</option>
+               <option>Thriller</option>
+               <option>Romantico</option>
+               <option>Azione</option>
           </select>
         </div>
       </div>
