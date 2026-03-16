@@ -7,18 +7,18 @@ function App() {
 
 
   const films  = [
-   { title: 'Inception', genre: 'Fantascienza' },
-   { title: 'Il Padrino', genre: 'Thriller' },
-   { title: 'Titanic', genre: 'Romantico' },
-   { title: 'Batman', genre: 'Azione' },
-   { title: 'Interstellar', genre: 'Fantascienza' },
-   { title: 'Pulp Fiction', genre: 'Thriller' },
+   { title: 'Inception', genre: 'Fantascienza', id:1 },
+   { title: 'Il Padrino', genre: 'Thriller', id:2 },
+   { title: 'Titanic', genre: 'Romantico', id:3 },
+   { title: 'Batman', genre: 'Azione', id:4 },
+   { title: 'Interstellar', genre: 'Fantascienza', id:5 },
+   { title: 'Pulp Fiction', genre: 'Thriller', id:6 },
  ]
 
  const [genere, setGenere] = useState()
- console.log(genere)
  
- const [filmFiltrati, setFilmFiltrati] = useState("all")  
+ 
+ const [filmFiltrati, setFilmFiltrati] = useState(films)  
 
  useEffect(() => {
   if (genere === ("tutti")) {
@@ -39,7 +39,7 @@ function App() {
         <div className='col'>
           <h1>Lista film</h1>
           <p>Seleziona il genere che vuoi visionare</p>
-          <select className="form-select" aria-label="Default select example" onChange={(e) => setGenere(e.target.value)}>
+          <select className="form-select" aria-label="Default select example" value={genere} onChange={(e) => setGenere(e.target.value)}>
                <option>tutti</option>
                <option>Fantascienza</option>
                <option>Thriller</option>
@@ -55,8 +55,8 @@ function App() {
           <ul className="list-group">
             <h3>Titoli</h3>
             {
-                films.map(film =>(
-                <li className='list-group-item'>Titolo: {film.title} Genere:{film.genre}</li>
+                filmFiltrati !== "tutti" && filmFiltrati.map(film =>(
+                <li className='list-group-item' key={film.id}>Titolo: {film.title} Genere: {film.genre}</li>
               ))
             }
           </ul>
