@@ -21,10 +21,15 @@ function App() {
  const [filmFiltrati, setFilmFiltrati] = useState("all")  
 
  useEffect(() => {
-  if (genere) {
-    const filtrati = films.filter(film => film.genre === genere);
-    setFilmFiltrati(filtrati);
-  }
+  if (genere === ("tutti")) {
+      setFilmFiltrati(filtrati);
+      }
+      else{
+      const filtrati = films.filter(film => film.genre === genere);
+      setFilmFiltrati(filtrati);
+      }
+  
+
 }, [genere]);
 
   return (
@@ -35,6 +40,7 @@ function App() {
           <h1>Lista film</h1>
           <p>Seleziona il genere che vuoi visionare</p>
           <select className="form-select" aria-label="Default select example" onChange={(e) => setGenere(e.target.value)}>
+               <option>tutti</option>
                <option>Fantascienza</option>
                <option>Thriller</option>
                <option>Romantico</option>
@@ -49,7 +55,7 @@ function App() {
           <ul className="list-group">
             <h3>Titoli</h3>
             {
-              films.map(film =>(
+                films.map(film =>(
                 <li className='list-group-item'>Titolo: {film.title} Genere:{film.genre}</li>
               ))
             }
